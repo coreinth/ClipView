@@ -1,0 +1,9 @@
+00:00 -> 00:35 intro
+00:35 -> 03:20 software bug iceberg
+03:20 -> 06:07 software bugs cause people
+06:07 -> 09:30 500 cancel flights
+09:30 -> 11:16 2020 citibank bad ui disaster
+11:16 -> 12:27 new york stock exchange
+12:27 -> 14:07 terrible air handling logic
+14:07 -> 15:37 famous deadly software bug
+15:37 -> 16:49 misleading altitude data

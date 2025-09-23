@@ -1,0 +1,5 @@
+0:00 -> 2:56 Intro
+2:56 -> 4:35 Chapter 1: Baseline
+4:35 -> 7:40 Chapter 2: Trigger
+7:40 -> 14:12 Chapter 3: Execution
+14:12 -> 30:13 Chapter 4: Post Mortem

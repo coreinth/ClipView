@@ -1,0 +1,25 @@
+0:00 -> 0:54 It's not a bug, it's a feature
+0:54 -> 1:37 Z2K9
+1:37 -> 2:24 Pentium FDIV
+2:24 -> 3:21 Facetime Eavesdropping
+3:21 -> 4:38 Chase Free Money Glitch
+4:38 -> 5:24 Network Switch Cascade
+5:24 -> 6:05 OBOGS Hypoxia
+6:05 -> 6:41 Heathrow Hell
+6:41 -> 7:18 Vancouver Rounding Error
+7:18 -> 8:15 Norris Worm
+8:15 -> 8:36 NASA Mars Orbiter
+8:36 -> 9:03 Ariane 5 Rocket
+9:03 -> 9:31 Prius Brake Delay
+9:31 -> 10:09 Shitibank's Bad UI
+10:09 -> 10:42 Y2K Fakeout
+10:42 -> 11:21 Knight Capital Money Burn Speed Run
+11:21 -> 12:03 Heartbleed
+12:03 -> 12:42 Toyota Full Send
+12:42 -> 13:10 Crowdstrike BSOD
+13:10 -> 13:44 North Eastern Blackout
+13:44 -> 14:12 Chinook Overflow
+14:12 -> 14:51 Therac-25
+14:51 -> 15:20 Patriot Clock
+15:20 -> 15:43 Aegis Combat UI
+15:43 -> 16:49 737 Max Disaster
