@@ -8,5 +8,7 @@
 - Does not work as well with videos that have a lot of topics or rapid topic changes
   - Videos with many segments or rapid compilations
   - Streamlined documentary narrative (like telling one whole story)
-- Videos with a lot of segments might not be detected due to the threshold settings
-- 
+- Videos with a lot of segments are not detected due to the threshold settings
+- Narrative documentaries do not perform well because of the coherence in sentences
+  - Works best with semantic transitions than thematic transitions because the audio preprocessing technique uses semantic analysis
+  - Narrative documentaries (and same types of content structure) use the same vocabulary and terminology which gives a high similarity score thus giving a weak boundary signal 
