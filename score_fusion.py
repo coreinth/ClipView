@@ -135,12 +135,21 @@ def filter_chapters(chapters, min_gap_seconds=60, max_chapters=10):
     
     return filtered[:max_chapters]
 
-def generate_chapter_title(bert_transcript, max_words=8):
-    """ Extract keywords from BERT transcript for chapter title using Rake """
+def generate_chapter_title(bert_transcript, max_words=8, method="rake"):
+    """ Generate chapter title using various methods """
     
     if not bert_transcript:
         return "Chapter"
     
+    if method == "llm_local":
+        return generate_chapter_title_llm_local(bert_transcript, max_words)
+    elif method == "llm_cloud":
+        return generate_chapter_title_llm_cloud(bert_transcript, max_words)
+    else:  # Default: RAKE
+        return generate_chapter_title_rake(bert_transcript, max_words)
+
+def generate_chapter_title_rake(bert_transcript, max_words=8):
+    """Original RAKE-based title generation"""
     r = Rake()
     r.extract_keywords_from_text(bert_transcript)
     phrases = r.get_ranked_phrases()
@@ -149,6 +158,54 @@ def generate_chapter_title(bert_transcript, max_words=8):
         return " ".join(phrases[0].split()[:max_words])
     
     return " ".join(bert_transcript.strip().split()[:max_words])
+
+def generate_chapter_title_llm_local(bert_transcript, max_words=8):
+    """Generate title using local LLM (Ollama)"""
+    try:
+        import ollama
+        
+        prompt = f"""Create a {max_words}-word chapter title for this video segment:
+        
+        "{bert_transcript[:500]}"
+        
+        Make it descriptive and engaging. No quotes in response."""
+        
+        response = ollama.chat(model='llama3.2:3b', messages=[
+            {'role': 'user', 'content': prompt}
+        ])
+        
+        title = response['message']['content'].strip().replace('"', '')
+        words = title.split()[:max_words]
+        return " ".join(words)
+        
+    except Exception as e:
+        print(f"LLM local failed: {e}, falling back to RAKE")
+        return generate_chapter_title_rake(bert_transcript, max_words)
+
+def generate_chapter_title_llm_cloud(bert_transcript, max_words=8):
+    """Generate title using cloud LLM (OpenAI)"""
+    try:
+        import openai
+        
+        client = openai.OpenAI(api_key="your-api-key-here")
+        
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[{
+                "role": "user", 
+                "content": f"Create a {max_words}-word chapter title for: {bert_transcript[:300]}"
+            }],
+            max_tokens=20,
+            temperature=0.3
+        )
+        
+        title = response.choices[0].message.content.strip().replace('"', '')
+        words = title.split()[:max_words]
+        return " ".join(words)
+        
+    except Exception as e:
+        print(f"LLM cloud failed: {e}, falling back to RAKE")
+        return generate_chapter_title_rake(bert_transcript, max_words)
 
 def create_final_chapters():
     """Main function to create final chapter list"""

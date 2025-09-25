@@ -1,0 +1,6 @@
+# LLM Title Generator Requirements
+torch>=2.0.0
+transformers>=4.30.0
+accelerate>=0.20.0
+# Optional: for faster inference
+# bitsandbytes>=0.39.0  # For 8-bit quantization
