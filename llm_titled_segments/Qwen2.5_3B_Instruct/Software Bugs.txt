@@ -1,0 +1,9 @@
+00:00 -> 00:35 Gandhi's Pacifism in Civilization" To: "Gandhi's
+00:35 -> 03:20 Software Bugs That Frozen iPhones" To:
+03:20 -> 06:07 Software Glitch Leads to Massive ATM
+06:07 -> 09:30 Hackathon's Hidden Hazard
+09:30 -> 11:16 Y2K Hysteria and the PowerPag Bug"
+11:16 -> 12:27 Heartbleed Bug: SSL Vulnerability Uncovered
+12:27 -> 14:07 System Overload and Unreliable Alarms" To:
+14:07 -> 15:37 Software Overload: Deadly Radiation Bug" To:
+15:37 -> 16:49 Boeing's Max Grounded: Sensor Consistency Fix"
