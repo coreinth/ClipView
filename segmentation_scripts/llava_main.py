@@ -9,7 +9,11 @@ import gc
 import shutil
 import time
 
-video_path = "30min_vid3.mp4"
+# Default video path (can be overridden)
+default_video_path = "30min_vid3.mp4"
+
+# Add missing import
+from pathlib import Path
 
 def seconds_to_mmss(seconds):
     minutes = int(seconds) // 60
@@ -40,9 +44,13 @@ def initialize_models():
     
     return processor, model
 
-def extract_representative_frames(video_path, output_dir="segments"):
+def extract_representative_frames(video_path, output_dir="segments", output_prefix=None):
     """ Extract 3 frames per 1-minute segment"""
     
+    if os.path.exists(output_dir):
+        for frame_file in Path(output_dir).glob("frame_*.png"):
+            frame_file.unlink()
+            
     os.makedirs(output_dir, exist_ok=True)
     project_root = Path(__file__).parent
 
@@ -77,7 +85,14 @@ def extract_representative_frames(video_path, output_dir="segments"):
                 
     frame_paths = sorted([str(p) for p in Path(output_dir).glob("frame_*.png")])
             
-    with open(f"{output_dir}/frame_map.csv", "w") as f:
+    # Use output_prefix for CSV filename
+    if output_prefix:
+        csv_filename = f"{output_prefix}_frame_map.csv"
+    else:
+        csv_filename = "frame_map.csv"
+    
+    csv_file_path = f"{output_dir}/{csv_filename}"
+    with open(csv_file_path, "w") as f:
         f.write("filename,frame_number,timestamp,timestamp_mmss\n")
         for frame_path in frame_paths:
             fname = Path(frame_path).name
@@ -86,7 +101,10 @@ def extract_representative_frames(video_path, output_dir="segments"):
             timestamp_mmss = seconds_to_mmss(timestamp)
             f.write(f"{fname},{frame_num},{timestamp:.3f},{timestamp_mmss}\n")
 
-    return frame_paths
+    return {
+        'frames_per_segment': frame_paths,
+        'csv_file_path': csv_file_path
+    }
 
 def describe_frames_group(frames, processor, model):
     """ Process frames and summarize each segment """
@@ -123,11 +141,28 @@ def save_results(results, output_file="scene_descriptions.txt"):
         for filename, desc in results:
             f.write(f"{filename} ||| {desc}\n")
 
-def llava_main():
+def llava_main(video_path=None, output_prefix=None):
+    """Main LLaVA processing function
+    
+    Args:
+        video_path (str): Path to video file (defaults to default_video_path)
+        output_prefix (str): Prefix for output files (defaults to video filename)
+    
+    Returns:
+        dict: Processing results
+    """
+    if video_path is None:
+        video_path = default_video_path
+    
+    if output_prefix is None:
+        output_prefix = Path(video_path).stem
+    
     torch.cuda.empty_cache()
     processor, model = initialize_models()
 
-    frames_per_segment = extract_representative_frames(video_path)
+    extraction_result = extract_representative_frames(video_path, output_prefix=output_prefix)
+    frames_per_segment = extraction_result['frames_per_segment']
+    csv_file_path = extraction_result['csv_file_path']
 
     results = []
     total_scenes = len(frames_per_segment)
@@ -153,5 +188,19 @@ def llava_main():
             gc.collect()
 
     torch.cuda.empty_cache()
-    save_results(results)
+    
+    # Generate output filename with prefix
+    if output_prefix:
+        description_file = f"{output_prefix}_scene_descriptions.txt"
+    else:
+        description_file = "scene_descriptions.txt"
+    
+    save_results(results, description_file)
     print(f"Completed! Generated descriptions for {len(results)} scenes in {(time.time()-start_time)/60:.1f} minutes.\n")
+    
+    return {
+        "description_file": description_file,
+        "csv_file_path": csv_file_path,
+        "total_scenes": len(results),
+        "processing_time": (time.time()-start_time)
+    }

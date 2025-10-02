@@ -37,7 +37,7 @@ def analyze_scenes(image_features, segments, frame_info, diff_scores=None):
 
     return ranked_chapters
 
-def chapter_detection(frame_map_file="segments/frame_map.csv", desc_file="scene_descriptions.txt",
+def chapter_detection(video_path=None, frame_map_file="segments/frame_map.csv", desc_file="scene_descriptions.txt",
                                visual_change_threshold=0.2, similarity_threshold=0.15):
     device = "cuda" if torch.cuda.is_available() else "cpu"
     model, preprocess = clip.load("ViT-L/14", device=device)

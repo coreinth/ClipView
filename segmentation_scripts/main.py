@@ -1,8 +1,8 @@
 import json
-from torch_check import torch_check
-from llava_main import llava_main
-from clip_main import chapter_detection
-from score_fusion import create_final_chapters
+from segmentation_scripts.torch_check import torch_check
+from segmentation_scripts.llava_main import llava_main
+from segmentation_scripts.clip_main import chapter_detection
+from segmentation_scripts.score_fusion import create_final_chapters
 
 def seconds_to_mmss(seconds):
     """Convert seconds to MM:SS format"""

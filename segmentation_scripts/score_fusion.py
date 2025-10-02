@@ -135,18 +135,13 @@ def filter_chapters(chapters, min_gap_seconds=60, max_chapters=10):
     
     return filtered[:max_chapters]
 
-def generate_chapter_title(bert_transcript, max_words=8, method="rake"):
-    """ Generate chapter title using various methods """
+def generate_chapter_title(bert_transcript, max_words=8):
+    """ Generate chapter title using RAKE keyword extraction """
     
     if not bert_transcript:
         return "Chapter"
     
-    if method == "llm_local":
-        return generate_chapter_title_llm_local(bert_transcript, max_words)
-    elif method == "llm_cloud":
-        return generate_chapter_title_llm_cloud(bert_transcript, max_words)
-    else:  # Default: RAKE
-        return generate_chapter_title_rake(bert_transcript, max_words)
+    return generate_chapter_title_rake(bert_transcript, max_words)
 
 def generate_chapter_title_rake(bert_transcript, max_words=8):
     """Original RAKE-based title generation"""
@@ -159,60 +154,21 @@ def generate_chapter_title_rake(bert_transcript, max_words=8):
     
     return " ".join(bert_transcript.strip().split()[:max_words])
 
-def generate_chapter_title_llm_local(bert_transcript, max_words=8):
-    """Generate title using local LLM (Ollama)"""
-    try:
-        import ollama
-        
-        prompt = f"""Create a {max_words}-word chapter title for this video segment:
-        
-        "{bert_transcript[:500]}"
-        
-        Make it descriptive and engaging. No quotes in response."""
-        
-        response = ollama.chat(model='llama3.2:3b', messages=[
-            {'role': 'user', 'content': prompt}
-        ])
-        
-        title = response['message']['content'].strip().replace('"', '')
-        words = title.split()[:max_words]
-        return " ".join(words)
-        
-    except Exception as e:
-        print(f"LLM local failed: {e}, falling back to RAKE")
-        return generate_chapter_title_rake(bert_transcript, max_words)
-
-def generate_chapter_title_llm_cloud(bert_transcript, max_words=8):
-    """Generate title using cloud LLM (OpenAI)"""
-    try:
-        import openai
-        
-        client = openai.OpenAI(api_key="your-api-key-here")
-        
-        response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=[{
-                "role": "user", 
-                "content": f"Create a {max_words}-word chapter title for: {bert_transcript[:300]}"
-            }],
-            max_tokens=20,
-            temperature=0.3
-        )
-        
-        title = response.choices[0].message.content.strip().replace('"', '')
-        words = title.split()[:max_words]
-        return " ".join(words)
-        
-    except Exception as e:
-        print(f"LLM cloud failed: {e}, falling back to RAKE")
-        return generate_chapter_title_rake(bert_transcript, max_words)
-
-def create_final_chapters():
-    """Main function to create final chapter list"""
+def create_final_chapters(clip_file="clip_chapter_results.json", bert_file="bert_chapter_results3.csv", output_file="RENAME_THIS.json"):
+    """Main function to create final chapter list
+    
+    Args:
+        clip_file (str): Path to CLIP results JSON file
+        bert_file (str): Path to BERT results CSV file
+        output_file (str): Path for output JSON file
+    
+    Returns:
+        list: Final chapters list
+    """
     
     print("Loading CLIP and BERT data...")
-    clip_chapters = load_clip_data()
-    bert_scores = load_bert_data()
+    clip_chapters = load_clip_data(clip_file)
+    bert_scores = load_bert_data(bert_file)
     
     print("Combining CLIP and BERT scores...")
     combined_chapters = combine_clip_bert_scores(clip_chapters, bert_scores)
@@ -223,17 +179,36 @@ def create_final_chapters():
     final_chapters.sort(key=lambda x: x['timestamp_seconds'])
     
     youtube_chapters = []
+    
+    # Always add a chapter at 0:00 if not present
+    if not final_chapters or final_chapters[0]['timestamp_seconds'] > 0:
+        # Use the first chapter's transcript if available, otherwise use a default title
+        first_transcript = final_chapters[0]['bert_transcript'] if final_chapters else ""
+        first_title = generate_chapter_title(first_transcript) if first_transcript else "Introduction"
+        
+        youtube_chapters.append({
+            "name": first_title,
+            "start": 0
+        })
+    
     for i, chapter in enumerate(final_chapters):
+        # Skip if this chapter is already at 0:00 (we just added it above)
+        if chapter['timestamp_seconds'] == 0:
+            continue
+            
         title = generate_chapter_title(chapter['bert_transcript'])
         youtube_chapters.append({
             "name": title,
             "start": int(chapter['timestamp_seconds'])
         })
     
-    with open("RENAME_THIS.json", "w") as f:
+    # Sort by start time to ensure proper order
+    youtube_chapters.sort(key=lambda x: x['start'])
+    
+    with open(output_file, "w") as f:
         json.dump(youtube_chapters, f, indent=2)
     
     print(f"Created {len(youtube_chapters)} final chapters")
-    print("Results saved file: RENAME_THIS.json")
+    print(f"Results saved to: {output_file}")
     
     return youtube_chapters
