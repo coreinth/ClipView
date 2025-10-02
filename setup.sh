@@ -9,7 +9,7 @@ if [ $? -ne 0 ]; then
     pip install torch torchvision
 fi
 
-pip install -r requirements.txt
+pip install -r segmentation_scripts/requirements.txt
 
 if [ $? -ne 0 ]; then
     echo "❌ Failed to install requirements. Please check requirements.txt exists."

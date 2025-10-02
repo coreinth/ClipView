@@ -182,9 +182,20 @@ def create_final_chapters(clip_file="clip_chapter_results.json", bert_file="bert
     
     # Always add a chapter at 0:00 if not present
     if not final_chapters or final_chapters[0]['timestamp_seconds'] > 0:
-        # Use the first chapter's transcript if available, otherwise use a default title
-        first_transcript = final_chapters[0]['bert_transcript'] if final_chapters else ""
-        first_title = generate_chapter_title(first_transcript) if first_transcript else "Introduction"
+        # Find transcript content from 0 to the start of the first chapter
+        first_chapter_start = final_chapters[0]['timestamp_seconds'] if final_chapters else 300  # Default to 5 minutes
+        
+        # Look for BERT data that covers the opening segment (0 to first chapter)
+        opening_transcript = ""
+        for bert_entry in bert_scores:
+            if bert_entry['start'] < first_chapter_start and bert_entry['end'] <= first_chapter_start:
+                opening_transcript += " " + bert_entry['transcript']
+        
+        # Generate title from opening content, or use default
+        if opening_transcript.strip():
+            first_title = generate_chapter_title(opening_transcript.strip())
+        else:
+            first_title = "Introduction"
         
         youtube_chapters.append({
             "name": first_title,

@@ -1,10 +1,10 @@
 import json
 import os
 from pathlib import Path
-from segmentation_scripts.torch_check import torch_check
-from segmentation_scripts.llava_main import llava_main
-from segmentation_scripts.clip_main import chapter_detection
-from segmentation_scripts.score_fusion import create_final_chapters
+from torch_check import torch_check
+from llava_main import llava_main
+from clip_main import chapter_detection
+from score_fusion import create_final_chapters
 
 def seconds_to_mmss(seconds):
     """Convert seconds to MM:SS format"""
@@ -45,17 +45,21 @@ def process_single_video(video_path, output_prefix=None):
     
     # Define output filenames with prefix
     clip_results_file = f"{output_prefix}_clip_chapter_results.json"
-    bert_results_file = f"../bert_score_files/{output_prefix}_bert_chapter_results3.csv"
+    
+    # Use absolute path for bert_score_files to avoid issues with changing working directory
+    script_dir = Path(__file__).parent
+    bert_results_file = script_dir.parent / "bert_score_files" / f"{output_prefix}_bert_output.csv"
+    
     final_results_file = f"{output_prefix}_final_chapters.json"
     
     try:
         # Step 1: Run LLaVA analysis
-        print("\\n🎬 Step 1: Running LLaVA scene analysis...")
+        print("\n🎬 Step 1: Running LLaVA scene analysis...")
         llava_results = llava_main(video_path, output_prefix)
         print("✅ LLaVA analysis completed")
         
         # Step 2: Run CLIP chapter detection
-        print("\\n🔍 Step 2: Running CLIP chapter detection...")
+        print("\n🔍 Step 2: Running CLIP chapter detection...")
         frame_map_file = f"segments/{output_prefix}_frame_map.csv"
         desc_file = f"{output_prefix}_scene_descriptions.txt"
         
@@ -77,17 +81,17 @@ def process_single_video(video_path, output_prefix=None):
         print(f"✅ Chapter detection completed. Results saved to {clip_results_file}")
         
         # Step 3: Create final chapters using score fusion
-        print("\\n⚡ Step 3: Running score fusion...")
+        print("\n⚡ Step 3: Running score fusion...")
         final_chapters = create_final_chapters(
             clip_file=clip_results_file,
-            bert_file=bert_results_file,
+            bert_file=str(bert_results_file),
             output_file=final_results_file
         )
         
         print("✅ Score fusion completed")
         
         # Display results
-        print(f"\\n🎯 FINAL RESULTS FOR {output_prefix}:")
+        print(f"\n🎯 FINAL RESULTS FOR {output_prefix}:")
         print(f"{'='*50}")
         print("YouTube Chapters:")
         for i, chapter in enumerate(final_chapters, 1):
@@ -98,7 +102,7 @@ def process_single_video(video_path, output_prefix=None):
             "output_prefix": output_prefix,
             "final_chapters": final_chapters,
             "clip_results_file": clip_results_file,
-            "bert_results_file": bert_results_file,
+            "bert_results_file": str(bert_results_file),
             "final_results_file": final_results_file,
             "success": True
         }
@@ -138,7 +142,7 @@ def process_multiple_videos(video_list, output_dir="results"):
         print(f"📁 Working directory: {os.path.abspath(output_dir)}")
         
         for i, video_item in enumerate(video_list, 1):
-            print(f"\\n{'='*80}")
+            print(f"\n{'='*80}")
             print(f"PROCESSING VIDEO {i}/{len(video_list)}")
             print(f"{'='*80}")
             
@@ -184,7 +188,7 @@ def process_multiple_videos(video_list, output_dir="results"):
         successful = [r for r in all_results if r.get('success', False)]
         failed = [r for r in all_results if not r.get('success', False)]
         
-        print(f"\\n{'='*80}")
+        print(f"\n{'='*80}")
         print("🎉 BATCH PROCESSING COMPLETE")
         print(f"{'='*80}")
         print(f"✅ Successfully processed: {len(successful)}/{len(video_list)} videos")
@@ -194,7 +198,7 @@ def process_multiple_videos(video_list, output_dir="results"):
             for fail in failed:
                 print(f"   - {fail['video_path']}: {fail.get('error', 'Unknown error')}")
         
-        print(f"\\n📄 Detailed results saved to: {os.path.abspath(batch_results_file)}")
+        print(f"\n📄 Detailed results saved to: {os.path.abspath(batch_results_file)}")
         
     finally:
         # Return to original directory
@@ -202,7 +206,7 @@ def process_multiple_videos(video_list, output_dir="results"):
     
     return all_results
 
-def get_videos_from_directory(videos_dir="../videos/", extensions=('.mp4', '.avi', '.mov', '.mkv')):
+def get_videos_from_directory(videos_dir="../video/", extensions=('.mp4', '.avi', '.mov', '.mkv')):
     """
     Automatically discover video files from a directory
     
@@ -243,8 +247,8 @@ def main():
     """
     
     # Configuration
-    SINGLE_VIDEO_MODE = True  # Set to False for batch processing
-    VIDEOS_DIRECTORY = "../videos/"  # Change this to your videos directory
+    SINGLE_VIDEO_MODE = False  # Set to False for batch processing
+    VIDEOS_DIRECTORY = "../video/"  # Change this to your videos directory
     
     if SINGLE_VIDEO_MODE:
         # Single video processing (original behavior)
@@ -252,27 +256,27 @@ def main():
         result = process_single_video(video_path)
         
         if result['success']:
-            print("\\n🎯 Processing completed successfully!")
+            print("\n🎯 Processing completed successfully!")
         else:
-            print(f"\\n❌ Processing failed: {result.get('error', 'Unknown error')}")
+            print(f"\n❌ Processing failed: {result.get('error', 'Unknown error')}")
     
     else:
         # Multiple video processing - automatically discover videos
         video_list = get_videos_from_directory(VIDEOS_DIRECTORY)
         
         if not video_list:
-            print("\\n❌ No videos found for batch processing!")
+            print("\n❌ No videos found for batch processing!")
             print(f"   Please add video files to: {Path(VIDEOS_DIRECTORY).absolute()}")
             return
         
-        print(f"\\n🚀 Starting batch processing of {len(video_list)} videos...")
+        print(f"\n🚀 Starting batch processing of {len(video_list)} videos...")
         
         # Process all videos
         results = process_multiple_videos(video_list, output_dir="batch_results")
         
         # Summary
         successful_count = sum(1 for r in results if r.get('success', False))
-        print(f"\\n🎉 Batch processing complete: {successful_count}/{len(video_list)} videos processed successfully")
+        print(f"\n🎉 Batch processing complete: {successful_count}/{len(video_list)} videos processed successfully")
 
 if __name__ == "__main__":
     main()

@@ -61,6 +61,8 @@ def extract_representative_frames(video_path, output_dir="segments", output_pref
     ffmpeg_path = shutil.which("ffmpeg")
     if not ffmpeg_path:
         ffmpeg_path = project_root / "ffmpeg" / "bin" / "ffmpeg.exe"
+    else:
+        ffmpeg_path = Path(ffmpeg_path)
     
     if not ffmpeg_path or not ffmpeg_path.exists():
         raise FileNotFoundError(f"FFmpeg not found at {ffmpeg_path}")

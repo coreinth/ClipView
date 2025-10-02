@@ -148,7 +148,7 @@ def main():
 
     
     here = Path(__file__).parent
-    videoFolder = here / "../video"
+    videoFolder = here / "video"
     ytDlpPath = getYtDlpPath(videoFolder)
     
     if not ytDlpPath.exists():
