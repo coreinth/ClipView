@@ -95,56 +95,77 @@ def cleanFilename(title):
 def main():
     videos = [
         {
-            "title": "What's the curse of the Schwarz lantern?",
-            "url": "https://www.youtube.com/watch?v=yAEveAH2KwI",
-            "filename": "schwarz_lantern"
+            "title": "Why Pantone Colors Are So Expensive | So Expensive | Business Insider",
+            "url": "https://www.youtube.com/watch?v=xnpyTNK4U9U",
+            "filename": "Pantone Colors"
         },
         {
-            "title": "Why Airport Food Is So Expensive",
-            "url": "https://www.youtube.com/watch?v=TTCDLykCk5I",
-            "filename": "airport_food"
+            "title": "What Happens After Capitalism?",
+            "url": "https://www.youtube.com/watch?v=IBbUdTcWD50",
+            "filename": "Capitalism"
         },
         {
-            "title": "7 Puzzles That Will Test Your Mental Skills",
-            "url": "https://www.youtube.com/watch?v=sqI7UnsiFlQ&t=43s",
-            "filename": "mental_puzzles"
+            "title": "Is breakfast really the most important meal of the day? - The Food Chain podcast, BBC World Service",
+            "url": "https://www.youtube.com/watch?v=YHITn1yAH_M",
+            "filename": "Breakfast Importance"
         },
         {
-            "title": "How To Get SO Good At Sudoku You Ignore Difficulty",
-            "url": "https://www.youtube.com/watch?v=nzTnWutlrDo",
-            "filename": "sudoku_mastery"
+            "title": "How much water should I drink a day? - The Food Chain podcast, BBC World Service",
+            "url": "https://www.youtube.com/watch?v=KEHyOrjYVk0",
+            "filename": "Water Intake"
         },
         {
-            "title": "Differential Equations: The Language of Change",
-            "url": "https://www.youtube.com/watch?v=vTTlzmCRwU4",
-            "filename": "differential_equations"
+            "title": "These Numbers Can Make AI Dangerous [Subliminal Learning]",
+            "url": "https://www.youtube.com/watch?v=NUAb6zHXqdI",
+            "filename": "AI Dangerous"
         },
         {
-            "title": "Every Major Human Mistake That Changed History Forever",
-            "url": "https://www.youtube.com/watch?v=41i2XIV8mCI",
-            "filename": "human_mistakes"
+            "title": "The F=ma of Artificial Intelligence [Backpropagation, How Models Learn Part 2]",
+            "url": "https://www.youtube.com/watch?v=VkHfRKewkWw",
+            "filename": "AI Backpropagation"
         },
         {
-            "title": "But how does bitcoin actually work?",
-            "url": "https://www.youtube.com/watch?v=bBC-nXj3Ng4",
-            "filename": "bitcoin_explained"
+            "title": "Why Deep Learning Works Unreasonably Well [How Models Learn Part 3]",
+            "url": "https://www.youtube.com/watch?v=qx7hirqgfuU",
+            "filename": "Deep Learning Works"
         },
         {
-            "title": "LeetCode Was Hard Until I Learned THESE 8 Patterns",
-            "url": "https://www.youtube.com/watch?v=RYT08CaYq6A",
-            "filename": "leetcode_patterns"
+            "title": "The Map of Quantum Computing - Quantum Computing Explained",
+            "url": "https://www.youtube.com/watch?v=-UlxHPIEVqA",
+            "filename": "Quantum Computing Map"
         },
         {
-            "title": "But, what is Virtual Memory?",
-            "url": "https://www.youtube.com/watch?v=A9WLYbE0p-I",
-            "filename": "virtual_memory"
+            "title": "The Map of Engineering",
+            "url": "https://www.youtube.com/watch?v=pQgxiQAMTTo",
+            "filename": "Engineering Map"
         },
         {
-            "title": "Linux File System Structure Explained: From / to /usr | Linux Basics",
-            "url": "https://www.youtube.com/watch?v=ISJ44S5sZu8",
-            "filename": "linux_file_system"
+            "title": "The Fascinating Map of Fungi",
+            "url": "https://www.youtube.com/watch?v=5FqFg-rjzPo",
+            "filename": "Fungi Map"
+        },
+        {
+            "title": "These are the asteroids to worry about",
+            "url": "https://www.youtube.com/watch?v=4Wrc4fHSCpw",
+            "filename": "Asteroids to Worry"
+        },
+        {
+            "title": "The Man Who Accidentally Killed The Most People In History",
+            "url": "https://www.youtube.com/watch?v=IV3dnLzthDA",
+            "filename": "Most People Killed"
+        },
+        {
+            "title": "Reinforcement Learning with Neural Networks: Mathematical Details",
+            "url": "https://www.youtube.com/watch?v=DVGmsnxB2UQ",
+            "filename": "RL Math Details"
+        },
+        {
+            "title": "Reinforcement Learning with Neural Networks: Essential Concepts",
+            "url": "https://www.youtube.com/watch?v=9hbQieQh7-o",
+            "filename": "RL Essential Concepts"
         }
     ]
+
 
     
     here = Path(__file__).parent
