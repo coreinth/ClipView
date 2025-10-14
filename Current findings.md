@@ -12,8 +12,3 @@
 - Narrative documentaries do not perform well because of the coherence in sentences
   - Works best with semantic transitions than thematic transitions because the audio preprocessing technique uses semantic analysis
   - Narrative documentaries (and same types of content structure) use the same vocabulary and terminology which gives a high similarity score thus giving a weak boundary signal 
-
-# Untested Videos
-- mental_puzzles
-- sudoku_mastery
-- virtual_memory

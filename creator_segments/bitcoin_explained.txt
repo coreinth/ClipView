@@ -1,0 +1,9 @@
+0:00 -> 2:25 Introduction
+2:25 -> 7:21 Ledgers and digital signatures
+7:21 -> 10:06 The ledger is the currency
+10:06 -> 12:26 Decentralization
+12:26 -> 14:38 Cryptographic hash functions
+14:38 -> 19:42 Proof of work and blockchains
+19:42 -> 21:41 Double spending
+21:41 -> 24:40 Block times, halvenings, and transaction fees
+24:40 -> 25:15 Thanks

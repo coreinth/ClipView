@@ -1,0 +1,10 @@
+0:00 -> 0:44 Introduction
+0:44 -> 6:19 How Quantum Computers Work
+6:19 -> 12:01 Quantum Algorithms
+12:01 -> 15:26 Potential Applications of Quantum Computing
+15:26 -> 17:29 Models of Quantum Computing
+17:29 -> 19:29 Qiskit Sponsorship Message
+19:29 -> 24:59 Models of Quantum Computing Continued
+24:59 -> 27:24 Obstacles to Building a Quantum Computer
+27:24 -> 31:45 What Real Quantum Computers Are Made From
+31:45 -> 33:28 Summary

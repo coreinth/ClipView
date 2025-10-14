@@ -1,0 +1,4 @@
+0:00 -> 0:03 Intro
+0:03 -> 5:42 Linear data structures like trees
+5:42 -> 20:50 Binary search would work like
+20:50 -> 21:06 Dynamic programming

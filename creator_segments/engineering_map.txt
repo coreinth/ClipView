@@ -1,0 +1,11 @@
+0:00 -> 0:37 Introduction
+0:37 -> 4:55 Civil Engineering
+4:55 -> 6:55 Chemical Engineering
+6:55 -> 8:23 Bio-engineering
+8:23 -> 13:04 Mechanical Engineering
+13:04 -> 13:38 Aerospace Engineering
+13:38 -> 14:18 Marine Engineering
+14:18 -> 17:50 Electrical Engineering
+17:50 -> 19:33 Computer Engineering
+19:33 -> 20:43 Photonics
+20:43 -> 22:09 Sponsorship Message

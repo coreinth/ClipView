@@ -184,8 +184,8 @@ def compare_files(creator_file: str, clipview_file: str, iou_threshold: float = 
     
     return metrics
 
-def compare_all_files(creator_dir: str = "creator_segments", 
-                     clipview_dir: str = "clipview_segments", 
+def compare_all_files(creator_dir: str = "../creator_segments", 
+                     clipview_dir: str = "../clipview_segments", 
                      iou_threshold: float = 0.3):
     """Compare all matching files between creator and clipview directories."""
     
@@ -261,7 +261,25 @@ def compare_all_files(creator_dir: str = "creator_segments",
         print("-" * 60)
         for r in all_results:
             print(f"{r['filename']:<20} P:{r['precision']:.3f} R:{r['recall']:.3f} F1:{r['f1_score']:.3f} IoU:{r['average_iou']:.3f}")
-    
+
+        summary_path = "segment_comparison_summary.txt"
+        with open(summary_path, "w", encoding="utf-8") as f:
+            f.write("OVERALL SUMMARY ACROSS ALL FILES\n")
+            f.write("=" * 80 + "\n")
+            f.write(f"Files analyzed: {len(all_results)}\n")
+            f.write(f"Total creator segments: {total_creator}\n")
+            f.write(f"Total clipview segments: {total_clipview}\n")
+            f.write(f"Total matched segments: {total_matched}\n\n")
+            f.write(f"Overall Precision: {overall_precision:.3f}\n")
+            f.write(f"Overall Recall: {overall_recall:.3f}\n")
+            f.write(f"Overall F1-Score: {overall_f1:.3f}\n")
+            f.write(f"Overall Average IoU: {overall_avg_iou:.3f}\n\n")
+            f.write("Per-file breakdown:\n")
+            f.write("-" * 60 + "\n")
+            for r in all_results:
+                f.write(f"{r['filename']:<20} P:{r['precision']:.3f} R:{r['recall']:.3f} F1:{r['f1_score']:.3f} IoU:{r['average_iou']:.3f}\n")
+
+        print(f"\n📄 Summary saved to: {summary_path}")
     return all_results
 
 def main():

@@ -1,0 +1,14 @@
+0:00 -> 1:47 Intro
+1:47 -> 3:49 Why Welch Labs uses runpod for AI infrastructure - sponsored ad
+3:49 -> 5:44 The subliminal learning phenomenon
+5:44 -> 6:56 In context learning
+6:56 -> 7:45 Why can’t we just train a classifier?
+7:45 -> 9:28 Other clues
+9:28 -> 12:47 Small scale replication on MNIST
+12:47 -> 23:01 Mathematical proof
+23:01 -> 25:38 Proof Take-aways
+25:38 -> 26:14 Solving the GPT 4.1/4o mystery
+26:14 -> 27:55 My take on what’s going on
+27:55 -> 29:11 The token entanglement hypothesis
+29:11 -> 31:09 Final thoughts & take-aways
+31:09 -> 33:04 Subliminal Learning Poster!

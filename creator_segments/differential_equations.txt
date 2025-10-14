@@ -1,0 +1,11 @@
+0:00 -> 1:44 Introduction
+1:44 -> 4:22 State Variables
+4:22 -> 8:24 Differential Equations
+8:24 -> 11:52 Numerical solutions
+11:52 -> 15:13 Predator-Prey model
+15:13 -> 16:49 Phase Portraits
+16:49 -> 18:51 Equilibrium points & Stability
+18:51 -> 20:19 Limit Cycles
+20:19 -> 21:25 Conclusion
+21:25 -> 22:48 Sponsor: Brilliant.org
+22:48 -> 23:23 Outro

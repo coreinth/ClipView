@@ -1,0 +1,9 @@
+0:00 -> 2:08 Intro
+2:08 -> 3:46 Back propagation works
+3:46 -> 6:10 Back propagation algorithm
+6:10 -> 9:28 Learning algorithm
+9:28 -> 11:25 Single model parameter
+11:25 -> 19:34 Particularly efficient way
+19:34 -> 25:57 Gradient descent process
+25:57 -> 28:14 Lava model represents individual tokens like madrid
+28:14 -> 30:31 Solve incredibly complex problems

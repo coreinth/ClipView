@@ -1,0 +1,1 @@
+ClipView Performance Analysis Summary\n==================================================\n\nOverall F1-Score: 0.528\nOverall Precision: 0.662\nOverall Recall: 0.490\nOverall IoU: 0.529\n\nExcellent performers: 3 videos\nPoor performers: 6 videos\n

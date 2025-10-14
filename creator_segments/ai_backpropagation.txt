@@ -1,0 +1,14 @@
+0:00 -> 2:08 Intro
+2:08 -> 3:45 No more spam calls w/ Incogni
+3:45 -> 5:20 Toy Model
+5:20 -> 6:17 y=mx+b
+6:17 -> 7:48 Softmax
+7:48 -> 9:08 Cross Entropy Loss
+9:08 -> 12:31 Computing Gradients
+12:31 -> 18:23 Backpropagation
+18:23 -> 20:17 Gradient Descent
+20:17 -> 23:53 Watching our Model Learn
+23:53 -> 25:45 Scaling Up
+25:45 -> 28:13 The Map of Language
+28:13 -> 29:48 The time I quit YouTube
+29:48 -> 30:31 New Patreon Rewards!

@@ -1,0 +1,3 @@
+0:00 -> 5:17 Intro
+5:17 -> 6:50 Initial ram disk
+6:50 -> 17:31 Wide configuration files

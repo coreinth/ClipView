@@ -1,0 +1,9 @@
+0:00 -> 3:50 Intro
+3:50 -> 6:32 128 neurons
+6:32 -> 11:43 Trained using backpropagation
+11:43 -> 14:09 Outputting planes
+14:09 -> 19:53 Successfully train
+19:53 -> 26:42 Make incredible efficiency gains
+26:42 -> 30:28 See exponential growth
+30:28 -> 31:42 Called neural networks demystified
+31:42 -> 34:08 Learning incredibly complex patterns

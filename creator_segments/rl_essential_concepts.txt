@@ -1,0 +1,9 @@
+0:00 -> 4:01 Awesome song and introduction
+4:01 -> 6:25 Backpropagation review
+6:25 -> 7:04 The problem with standard backpropagation
+7:04 -> 11:20 Taking a guess to calculate the derivative
+11:20 -> 14:56 Using a reward to update the derivative
+14:56 -> 16:01 Alternative rewards
+16:01 -> 16:56 Updating a parameter with the updated derivative
+16:56 -> 22:05 A second example
+22:05 -> 23:59 Summary

@@ -1,0 +1,40 @@
+OVERALL SUMMARY ACROSS ALL FILES
+================================================================================
+Files analyzed: 26
+Total creator segments: 297
+Total clipview segments: 184
+Total matched segments: 136
+
+Overall Precision: 0.739
+Overall Recall: 0.458
+Overall F1-Score: 0.565
+Overall Average IoU: 0.596
+
+Per-file breakdown:
+------------------------------------------------------------
+airport_food.txt     P:0.889 R:0.615 F1:0.727 IoU:0.568
+ai_backpropagation.txt P:1.000 R:0.643 F1:0.783 IoU:0.728
+ai_dangerous.txt     P:1.000 R:0.571 F1:0.727 IoU:0.584
+asteroids_to_worry.txt P:0.667 R:0.857 F1:0.750 IoU:0.541
+bitcoin_explained.txt P:1.000 R:0.444 F1:0.615 IoU:0.477
+breakfast_importance.txt P:0.600 R:0.750 F1:0.667 IoU:0.595
+capitalism.txt       P:0.222 R:0.500 F1:0.308 IoU:0.706
+deep_learning_works.txt P:1.000 R:0.692 F1:0.818 IoU:0.677
+differential_equations.txt P:0.500 R:0.091 F1:0.154 IoU:0.559
+engineering_map.txt  P:0.800 R:0.364 F1:0.500 IoU:0.447
+fungi_map.txt        P:0.875 R:0.500 F1:0.636 IoU:0.561
+human_mistakes.txt   P:0.900 R:0.529 F1:0.667 IoU:0.546
+leetcode_patterns.txt P:0.250 R:0.111 F1:0.154 IoU:0.327
+linux_file_system.txt P:0.333 R:0.045 F1:0.080 IoU:0.421
+most_people_killed.txt P:0.875 R:1.000 F1:0.933 IoU:0.612
+notpetya.txt         P:0.300 R:0.600 F1:0.400 IoU:0.635
+pantone_colors.txt   P:0.818 R:0.750 F1:0.783 IoU:0.640
+quantum_computing_map.txt P:0.900 R:0.900 F1:0.900 IoU:0.642
+rl_essential_concepts.txt P:0.000 R:0.000 F1:0.000 IoU:0.000
+rl_math_details.txt  P:0.500 R:0.200 F1:0.286 IoU:0.472
+schwarz_lantern.txt  P:0.750 R:0.250 F1:0.375 IoU:0.755
+seafood.txt          P:0.727 R:0.800 F1:0.762 IoU:0.658
+software_bugs.txt    P:0.889 R:0.320 F1:0.471 IoU:0.511
+traffic_jam.txt      P:0.625 R:0.833 F1:0.714 IoU:0.518
+us_minds.txt         P:0.800 R:0.381 F1:0.516 IoU:0.582
+water_intake.txt     P:0.000 R:0.000 F1:0.000 IoU:0.000

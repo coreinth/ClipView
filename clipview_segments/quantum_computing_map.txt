@@ -1,0 +1,10 @@
+0:00 -> 0:44 Intro
+0:44 -> 6:34 Quantum computers solve problems
+6:34 -> 8:07 Whole motivation behind quantum computers
+8:07 -> 14:07 Classical computer would
+14:07 -> 16:07 Actively raising money
+16:07 -> 19:29 Quantum computing
+19:29 -> 26:24 Quantum computing
+26:24 -> 28:14 Using many entangled qubits together
+28:14 -> 32:05 Fundamental entities like atoms
+32:05 -> 33:28 Current best quantum computers

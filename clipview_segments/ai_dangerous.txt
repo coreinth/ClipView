@@ -1,0 +1,8 @@
+0:00 -> 1:20 Intro
+1:20 -> 4:39 Remarkably includes reproducing similar behavior
+4:39 -> 6:43 Subliminal learning across different teacher
+6:43 -> 13:03 Influence student behavior
+13:03 -> 25:19 Problem one last time
+25:19 -> 27:10 Various loss functions
+27:10 -> 31:06 Teacher models preferences
+31:06 -> 33:04 Still alive

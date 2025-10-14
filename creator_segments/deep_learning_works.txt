@@ -1,0 +1,13 @@
+0:00 -> 4:49 Intro
+4:49 -> 6:32 How Incogni Saves Me Time
+6:32 -> 8:10 Part 2 Recap
+8:10 -> 9:15 Moving to Two Layers
+9:15 -> 11:45 How Activation Functions Fold Space
+11:45 -> 13:42 Numerical Walkthrough
+13:42 -> 15:45 Universal Approximation Theorem
+15:45 -> 19:52 The Geometry of Backpropagation
+19:52 -> 24:27 The Geometry of Depth
+24:27 -> 30:23 Exponentially Better?
+30:23 -> 31:50 Neural Networks Demystifed
+31:50 -> 33:31 The Time I Quit YouTube
+33:31 -> 34:08 New Patreon Rewards!
